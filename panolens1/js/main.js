@@ -10,16 +10,23 @@ const infospotPostions = [
 
 const viewer = new PANOLENS.Viewer({
     container: imageContainer,
-    autoRotate: true,
+    autoRotate: false,
     autoRotateSpeed: 0.3,
-    controlBar: true,
+    controlBar: false,
 });
 
-
-panorama1.link(panorama2, infospotPostions[0])
-panorama2.link(panorama1, infospotPostions[1])
+panorama1.link(panorama2, infospotPostions[0], 200)
+panorama2.link(panorama1, infospotPostions[1], 500)
 
 
 viewer.add( panorama1, panorama2 );
 
+const arrow = new PANOLENS.Infospot(300, PANOLENS.DataImage.Arrow);
+arrow.position.set(0, 0, 0); // Initial position
 
+panorama1.link(panorama2, infospotPostions[0], 200);
+panorama2.link(panorama1, infospotPostions[1]);
+
+viewer.add(panorama1, panorama2, arrow);
+
+console.log(panorama1)
